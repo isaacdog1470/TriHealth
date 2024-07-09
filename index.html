@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TriHealth</title>
+    <style>
+        body {
+            background-image: url("Hubbackround.jpg");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .corner-image {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 400px;
+            height: auto;
+            display: inline-block;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 50px;
+            box-sizing: border-box;
+            margin-top: -40px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 10px rgb(80, 161, 3);
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgb(21, 100, 21); }
+            to { text-shadow: 0 0 25px green; }
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: bold;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 10px black;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgb(21, 100, 21); }
+            to { text-shadow: 0 0 25px black; }
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+            object-fit: cover;
+        }
+
+        .menu-button {
+            display: inline-block;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            margin: 20px auto;
+            background-color: rgba(243, 243, 243, 0.705);
+            color: rgba(34, 48, 233, 0.87);
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-button:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .block {
+            width: 80%;
+            max-width: 500px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-top: 50px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .block h2 {
+            background-color: black;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .block p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 1000px) {
+            .contact-button {
+                position: fixed;
+                bottom: 40px;
+                right: 40px;
+                background-color: blue;
+                color: white;
+                font-size: 24px;
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                cursor: pointer;
+                z-index: 999;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .contact-button {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: blue;
+                color: white;
+                font-size: 24px;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                cursor: pointer;
+                z-index: 999;
+            }
+        }
+
+        .contact-button i {
+            margin: 0;
+        }
+
+        .contact-form {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-form-inner {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 80%;
+            text-align: center;
+        }
+
+        .contact-form input,
+        .contact-form textarea{
+            width: 80%;
+            height: 50px; 
+            margin-bottom: 10px;
+        }
+        .contact-form button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            height: 50px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <img class="background-image" src="Hubbackround.jpg" alt="Background Image">
+    <div class="container">
+        <div class="block">
+            <h1>TriHealth</h1>
+            <a href="HomeCal.html" class="menu-button">Calculators</a>
+            <a href="HomeExer.html" class="menu-button">Exercises</a>
+            <a href="HomeDiet.html" class="menu-button">Diets</a>
+            <a href="HomeCredit.html" class="menu-button">Credits</a>
+        </div>
+    </div>
+    <a class="contact-button" id="contact-button" href="#">
+        <i class="fa fa-envelope"></i> <!-- Font Awesome envelope icon -->
+    </a>
+    <div class="contact-form" id="contact-form-popup">
+        <div class="contact-form-inner">
+            <h2>Contact Us</h2>
+            <form id="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+    (function () {
+        emailjs.init("GzOGoRg5rml4AD11e");
+
+        // Show the contact form when the contact button is clicked
+        document.getElementById("contact-button").addEventListener("click", function () {
+            document.getElementById("contact-form-popup").style.display = "flex";
+        });
+
+        // Hide the contact form when the background overlay is clicked
+        document.querySelector(".contact-form").addEventListener("click", function (e) {
+            if (e.target === this) {
+                this.style.display = "none";
+            }
+        });
+
+        document.getElementById("contact-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Send the user's feedback email
+            emailjs.send("service_4fsyxnv", "template_h7i7px8", {
+                to_name: "TriHealth Support",
+                from_name: this.name.value,
+                from_email: this.email.value,
+                message: this.message.value,
+            }).then(
+                function (response) {
+                    console.log("Email sent successfully", response);
+                    alert("Your message has been sent. We will be responding shortly!");
+                },
+                function (error) {
+                    console.error("Email sending failed", error);
+                    alert("Oops, something went wrong. Please try again later.");
+                }
+            );
+
+            // Send the response email
+            emailjs.send("service_4fsyxnv", "template_h7i7px8", {
+                user_name: this.name.value, // Use the recipient's name from the form
+                user_email: this.email.value, // Use the recipient's email from the form
+            }).then(function (response) {
+                console.log("Response email sent successfully", response);
+            }, function (error) {
+                console.error("Response email sending failed", error);
+            });
+
+            // Hide the contact form
+            document.getElementById("contact-form-popup").style.display = "none";
+        });
+    })();
+</script>

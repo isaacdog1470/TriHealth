@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Buttons</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        @media (max-width: 1000px) {
+            .barh {
+                margin-top: 0;
+                font-size: 15px;
+                font-weight: bold;
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .barh {
+                margin-top: 0;
+                font-size: 30px;
+                font-weight: bold;
+            }
+        }
+
+        .top-bar {
+            background-color: #4CAF50;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-bottom: 2px solid #ccc;
+        }
+
+        .top-bar a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .top-bar a:hover {
+            background-color: #3F8749;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 1000px) {
+            h1 {
+                margin-top: 60px; /* Add margin to create space */
+                color: rgb(9, 219, 51);
+                font-size: 120px;
+                font-weight: bold;
+                animation: glow 2s ease-in-out infinite alternate;
+                text-shadow: 0 0 10px rgb(80, 161, 3);
+            }
+        }
+
+        /* Media query for smaller text on phone */
+        @media (max-width: 1000px) {
+            h1 {
+                margin-top: 60px; /* Add margin to create space */
+                color: rgb(9, 219, 51);
+                font-size: 70px;
+                font-weight: bold;
+                animation: glow 2s ease-in-out infinite alternate;
+                text-shadow: 0 0 10px rgb(80, 161, 3);
+            }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgb(48, 48, 48); }
+            to { text-shadow: 0 0 25px rgb(0, 0, 0); }
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .button {
+                display: block;
+                width: 80%;
+                padding: 80px 80px;
+                background-color: #774caf;
+                color: #fff;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 60px;
+                font-weight: bold;
+                transition: background-color 0.3s ease;
+            }
+        }
+
+        /* Media query for smaller text on phone */
+        @media (max-width: 767px) {
+            .button {
+                display: block;
+                width: 80%;
+                padding: 60px 40px;
+                background-color: #774caf;
+                color: #fff;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 40px; /* Adjust the font size for h2 on smaller screens */
+                font-weight: bold;
+                transition: background-color 0.3s ease;
+            }
+        }
+
+        .button:hover {
+            background-color: #3F8749;
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="#" class="h2"> </a>
+        <a href="index.html" class="barh">Home</a>
+        <a href="HomeCal.html" class="barh">Calculators</a>
+        <a href="#" class="barh">Exercises</a>
+        <a href="HomeDiet.html" class="barh">Diets</a>
+        <a href="HomeCredit.html" class="barh">Credits</a>
+        <a href="#" class="h2"> </a>
+    </div>
+
+    <img class="background-image" src="HomeExer.jpg" alt="Background Image">
+
+    <div class="container">
+        <h1>Exercises</h1>
+        <div class="button-container">
+            <a href="IndoorExer.html" class="button" style="background-color: #7E57C2;">Indoor Exercises</a>
+            <a href="OutDoorExer.html" class=" button" style="background-color: #8BC34A;">Outdoor Exercises</a>
+        </div>
+    </div>
+</body>
+</html>

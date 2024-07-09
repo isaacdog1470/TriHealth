@@ -1,0 +1,249 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>BMR Calculator</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        @media (max-width: 767px) {
+            .barh {
+                margin-top: 0;
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .barh {
+                margin-top: 0;
+                font-size: 30px;
+                font-weight: bold;
+            }
+        }
+
+        .top-bar {
+            background-color: #4CAF50;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-bottom: 2px solid #ccc;
+        }
+
+        @media (max-width: 1000px) {
+            .calculate {
+                font-size: 30px;
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .calculate {
+                font-size: 40px;
+            }
+        }
+
+        .top-bar a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .top-bar a:hover {
+            background-color: #3F8749;
+        }
+
+        @media (min-width: 1000px) {
+            .container {
+                background-color: #fff;
+                border-radius: 10px;
+                padding: 20px;
+                margin: 175px auto;
+                text-align: center;
+                box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+                max-width: 600px;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .container {
+                background-color: #fff;
+                border-radius: 10px;
+                padding: 20px;
+                margin: 500px auto;
+                text-align: center;
+                box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+                max-width: 600px;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input[type="number"] {
+            width: 400px;
+            padding: 16px;
+            font-size: 32px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 12px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .GO {
+            font-size: 50px; /* Font size of the selected option */
+            padding: 10px; /* Padding of the selected option */
+            height: 80px; /* Height of the dropdown box */
+            width: 430px;
+        }
+
+        .GO option {
+            font-size: 40px; /* Font size of each option */
+            padding: 10px; /* Padding of each option */
+        }
+
+        .response {
+            font-size: 40px;
+        }
+
+        button:hover {
+            background-color: #3F8749;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="#" class="h2"> </a>
+        <a href="index.html" class="barh">Home</a>
+        <a href="HomeCal.html" class="barh">Calculators</a>
+        <a href="HomeExer.html" class="barh">Exercises</a>
+        <a href="HomeDiet.html" class="barh">Diets</a>
+        <a href="HomeCredit.html" class="barh">Credits</a>
+        <a href="#" class="h2"> </a>
+    </div>
+
+    <img class="background-image" src="CalBMI.png" alt="Background Image">
+
+    <div class="container">
+        <h1>BMR Calculator</h1>
+        <form id="bmr-form">
+            <div class="input-group">
+                <label for="age" class="response">Age:</label>
+                <input type="number" id="age" required>
+            </div>
+
+            <div class="input-group">
+                <label for="gender" class="response">Gender:</label>
+                <select id="gender" class="GO" required>
+                    <option value="male" class="GO">Male</option>
+                    <option value="female" class="GO">Female</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="weight" class="response">Weight (kg):</label>
+                <input type="number" id="weight" required>
+            </div>
+
+            <div class="input-group">
+                <label for="height" class="response">Height (cm):</label>
+                <input type="number" id="height" required>
+            </div>
+
+            <button type="submit" class="calculate">Calculate</button>
+
+            <div id="result" class="result"></div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("bmr-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const age = parseFloat(document.getElementById("age").value);
+            const gender = document.getElementById("gender").value;
+            const weight = parseFloat(document.getElementById("weight").value);
+            const height = parseFloat(document.getElementById("height").value);
+
+            if (isNaN(age) || isNaN(weight) || isNaN(height) || age <= 0 || weight <= 0 || height <= 0) {
+                document.getElementById("result").textContent = "Please enter valid values.";
+                return;
+            }
+
+            const bmr = calculateBMR(age, gender, weight, height);
+            const resultText = `Your BMR: ${bmr.toFixed(2)} calories/day`;
+            document.getElementById("result").textContent = resultText;
+        });
+
+        function calculateBMR(age, gender, weight, height) {
+            let bmr = 0;
+
+            if (gender === "male") {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else if (gender === "female") {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+
+            return bmr;
+        }
+    </script>
+</body>
+</html>
